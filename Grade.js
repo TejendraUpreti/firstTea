@@ -1,20 +1,15 @@
-let scor = prompt("Enter the Mark numbers then finaliez the Grade!");
+let score = 30;
 let grade;
 
-if(scor >= 90 && scor <= 100){
+if(score >=90 && score <=100){
     grade = "A";
-}
-else if(scor >=70 && scor <=89){
+}else if(score >=70 && score <=89){
     grade = "B";
-}
-else if(scor >=60 && scor <=69){
+}else if(score >=50 && score <=69){
     grade = "C";
-}
-else if(scor >=50 && scor <=59){
+}else if(score >=30 && score <=49){
     grade = "D";
+}else{
+    grade = "fall";
 }
-else if(scor >=0 && scor <=49){
-    grade = "E";
-}
-    console.log(grade);
-
+console.log(grade)
