@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tab indicator</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+  <style>
+
+html,body{
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background-color: #185cab;
+  font-family: monospace; 
+}
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+label{
+  font-size: 24px;
+  font-weight: 700; 
+  cursor: pointer; 
+  color: #7c92b5; 
+  opacity: .4; 
+  transition: opacity .4s ease-in-out;
+  display: block; 
+  width: calc(100% - 48px) ;
+  text-align: right; 
+  z-index: 100; 
+  user-select: none;
+}
+input[type="radio"]{
+  display: none;
+  width: 0;
+}
+label:hover, input[type="radio"]:checked+label {
+  opacity: 1; 
+}
+.popup{
+  width: 60%;
+  height: 80%;
+  min-height: 480px; 
+  max-height: 480px; 
+  border-radius: 60px;
+  box-sizing: border-box; 
+  border: 12px solid #ebf0f4;
+  background-color: rgb(146, 146, 232);
+  overflow: hidden;
+  box-shadow: 16px 16px 48px #16191c30; 
+}
+.tabs{
+  width: 100%;
+  max-width: 240px;
+  height: 100%;
+  display: flex;
+  flex-direction: column; 
+  justify-content: space-around; 
+  position: relative;
+}
+.marker{
+  position: absolute; 
+  width: 100%;
+  height: 200%;
+  display: flex; 
+  flex-direction: column;
+  top: calc(-100% );
+  left: 0;
+  transition: transform .2s ease-in-out; 
+}
+.marker #bottom, .marker #top{
+  background-color: #02121f;
+  box-shadow: 32px 32px 48px #ffff; 
+}
+.marker #top{
+  height: calc(50%);
+  margin-bottom: auto; 
+  border-radius: 0 0 32px 0; 
+}
+.marker #bottom{
+  height: calc(50% - 72px);
+  border-radius: 0 32px 0 0; 
+}
+#tab1:checked ~ .marker{transform: translateY(calc(calc(50% / 6) * 0));}
+#tab2:checked ~ .marker{transform: translateY(calc(calc(50% / 6) * 1));}
+#tab3:checked ~ .marker{transform: translateY(calc(calc(50% / 6) * 2));}
+#tab4:checked ~ .marker{transform: translateY(calc(calc(50% / 6) * 3));}
+#tab5:checked ~ .marker{transform: translateY(calc(calc(50% / 6) * 4));}
+#tab6:checked ~ .marker{transform: translateY(calc(calc(51% / 6) * 5));}
+  </style>
+
+</head>
+<body>
+    <div class="popup">
+        <div class="tabs">
+              <input type="radio" id="tab1" name="tab" checked="true">        
+              <label for="tab1">Home</label>
+              <input type="radio" id="tab2" name="tab">
+            <label for="tab2">Blogs</label>
+              <input type="radio" id="tab3" name="tab">
+            <label for="tab3">Products</label>
+              <input type="radio" id="tab4" name="tab">
+            <label for="tab4">About Us</label>
+              <input type="radio" id="tab5" name="tab">
+            <label for="tab5">Contact Us</label>
+              <input type="radio" id="tab6" name="tab">
+            <label for="tab6">Service</label>
+            <div class="marker">
+               <div id="top"></div>
+               <div id="bottom"></div>
+            </div>
+        </div>
+        
+      </div>
+</body>
+</html>
