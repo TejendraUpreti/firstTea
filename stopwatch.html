@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stopwatch Teju</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+    #stopwatch {
+        font-size: 2em;
+        margin-top: 50px;
+    }
+    button {
+        font-size: 1em;
+        margin-top: 20px;
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+
+<div id="stopwatch">00:00:00</div>
+<button id="startStopButton">Start</button>
+<button id="resetButton">Reset</button>
+
+<script>
+    let timer;
+    let seconds = 0;
+    let minutes = 0;
+    let hours = 0;
+    let isRunning = false;
+
+    function startStopwatch() {
+        if (!isRunning) {
+            isRunning = true;
+            timer = setInterval(updateStopwatch, 1000);
+            document.getElementById("startStopButton").textContent = "Stop";
+        } else {
+            isRunning = false;
+            clearInterval(timer);
+            document.getElementById("startStopButton").textContent = "Start";
+        }
+    }
+
+    function updateStopwatch() {
+        seconds++;
+        if (seconds === 60) {
+            seconds = 0;
+            minutes++;
+            if (minutes === 60) {
+                minutes = 0;
+                hours++;
+            }
+        }
+        const formattedTime = pad(hours) + ":" + pad(minutes) + ":" + pad(seconds);
+        document.getElementById("stopwatch").textContent = formattedTime;
+    }
+
+    function resetStopwatch() {
+        clearInterval(timer);
+        seconds = 0;
+        minutes = 0;
+        hours = 0;
+        document.getElementById("stopwatch").textContent = "00:00:00";
+        isRunning = false;
+        document.getElementById("startStopButton").textContent = "Start";
+    }
+
+    function pad(val) {
+        return val < 10 ? "0" + val : val;
+    }
+
+    document.getElementById("startStopButton").addEventListener("click", startStopwatch);
+    document.getElementById("resetButton").addEventListener("click", resetStopwatch);
+</script>
+
+</body>
+</html>
